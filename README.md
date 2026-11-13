@@ -27,6 +27,7 @@ A One Piece-themed Discord bot with persistent player progression, crew manageme
 
 Use `npm run dev` for Node's watch mode and `npm test` to run the automated tests. Keep `.env` and the SQLite database private; both are excluded from Git.
 Global slash commands may take up to an hour to appear in a newly added server. The bot process must be running for commands and scheduled features to respond.
+When the bot joins a server, it posts a welcome and setup pointer in a channel it can access and sends the server owner a DM with setup steps. The server owner can disable DMs from server members, and the bot needs permission to view and send messages in at least one text channel to post the server welcome.
 
 ## Features
 

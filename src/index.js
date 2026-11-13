@@ -15,6 +15,7 @@ const {
 const { startPotdScheduler } = require("./potd");
 const { startTriviaScheduler } = require("./trivia");
 const { handleActionMessage } = require("./actions");
+const { sendGuildWelcome } = require("./guild-welcome");
 
 const token = process.env.DISCORD_TOKEN?.trim();
 
@@ -49,6 +50,12 @@ client.once(Events.ClientReady, readyClient => {
 
   // Start the automatic Trivia scheduler.
   startTriviaScheduler(readyClient);
+});
+
+client.on(Events.GuildCreate, guild => {
+  sendGuildWelcome(guild).catch(error => {
+    console.error(`Couldn't welcome the bot to ${guild.name}:`, error);
+  });
 });
 
 // Handle slash commands, autocomplete, buttons and other interactions.
