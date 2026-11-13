@@ -10,14 +10,14 @@ A One Piece-themed Discord bot with persistent player progression, crew manageme
 ## Setup
 
 1. Create a Discord application at https://discord.com/developers/applications and create a bot.
-2. Under **OAuth2 → URL Generator**, select `bot` and `applications.commands`, then invite the bot to a test server with the required channel permissions.
-3. Copy `.env.example` to `.env` and set:
+2. Under **Bot → Privileged Gateway Intents**, enable **Message Content Intent**. Under **Bot → Authorization Flow**, enable **Public Bot** so other server owners can invite it.
+3. Invite it to a server using [this install link](https://discord.com/oauth2/authorize?client_id=1561301465258000505&permissions=268553232&integration_type=0&scope=bot%20applications.commands). The link requests **View Channels**, **Send Messages**, **Embed Links**, **Attach Files**, **Read Message History**, **Manage Channels**, and **Manage Roles**. The last two are used to create private crew activity logs.
+4. Copy `.env.example` to `.env` and set:
    - `DISCORD_TOKEN` — the bot token (keep it secret)
    - `CLIENT_ID` — the Application ID from **General Information**
-   - `GUILD_ID` — your test server ID; optional if you want global command registration
+   - `GUILD_ID` — optional; slash commands are registered globally and the bot can be used in multiple servers
    - `DATABASE_PATH` — optional SQLite file path; defaults to `data/den-den-mushi.sqlite`
-4. Enable the **Message Content Intent** in the Discord Developer Portal. Daily missions and hero chat XP use regular text messages, so this privileged intent is required for both.
-5. Install, register commands, and start the bot:
+5. Install dependencies, register commands, and start the bot:
 
    ```bash
    npm install
@@ -26,6 +26,7 @@ A One Piece-themed Discord bot with persistent player progression, crew manageme
    ```
 
 Use `npm run dev` for Node's watch mode and `npm test` to run the automated tests. Keep `.env` and the SQLite database private; both are excluded from Git.
+Global slash commands may take up to an hour to appear in a newly added server. The bot process must be running for commands and scheduled features to respond.
 
 ## Features
 
