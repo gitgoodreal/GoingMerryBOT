@@ -1,0 +1,25 @@
+{
+  "name": "den-den-mushi-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A One Piece-inspired Discord community bot with crews, Berries, profiles, and leaderboards.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "register": "node src/register-commands.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.11",
+    "better-sqlite3": "^13.0.3",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.4.7"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": true
+  }
+}
